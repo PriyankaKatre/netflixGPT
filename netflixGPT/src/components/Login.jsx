@@ -1,18 +1,17 @@
 import React, { useState, useRef } from 'react';
 import Header from './Header';
-import { checkValidData } from '../utils/Validate';
+import { checkValidData } from '../utils/Validate.js';
 import { auth } from '../utils/firebase';
 import {
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
   updateProfile,
 } from 'firebase/auth';
-
 import { useDispatch } from 'react-redux';
 import { addUser } from '../utils/userSlice';
+import { bgImage } from '../utils/constants';
 
 const Login = () => {
-
   const dispatch = useDispatch();
   const [isSignInForm, setIsSignINForm] = useState(true);
   const [errorMessage, setErrorMessage] = useState(null);
@@ -58,7 +57,6 @@ const Login = () => {
             .catch((error) => {
               setErrorMessage(error.message);
             });
-
         })
         .catch((error) => {
           const errorCode = error.code;
@@ -73,7 +71,6 @@ const Login = () => {
       )
         .then(() => {
           // Signed in
-
           // ...
         })
         .catch((error) => {
@@ -87,7 +84,7 @@ const Login = () => {
     <>
       <Header />
       <div className="absolute">
-        <img src="https://assets.nflxext.com/ffe/siteui/vlv3/21a8ba09-4a61-44f8-8e2e-70e949c00c6f/42fb78f2-f5de-4a30-a9c7-2e9d1e05d9b8/GB-en-20240722-POP_SIGNUP_TWO_WEEKS-perspective_WEB_b9a6d365-611b-4851-b907-4505b4230f79_large.jpg" />
+        <img src={bgImage} />
       </div>
       <form
         onSubmit={(e) => e.preventDefault()}

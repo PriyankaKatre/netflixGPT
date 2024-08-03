@@ -7,8 +7,8 @@ export const options = {
   method: 'GET',
   headers: {
     accept: 'application/json',
-    Authorization:
-      'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIyNjY2MzRkMDY4ZDk0ZDAyNDdjYzk3ODc3N2JkMDI1YiIsIm5iZiI6MTcyMjUxMTY1Ni43Nzg1NDUsInN1YiI6IjY2YWI2ZmY3MzA2OGJmZTgwMDVhMDlhOSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.4NtOQZlTL7BsIS3fODFPWE_bh_aiD4FrrWizA53jnD0',
+    // @ts-ignore
+    Authorization: import.meta.env.VITE_APP_TMDB,
   },
 };
 
@@ -19,3 +19,6 @@ export const SUPPORTED_LANGUAGES = [
   { identifier: 'hindi', name: 'Hindi' },
   { identifier: 'spanish', name: 'Spanish' },
 ];
+
+// @ts-ignore
+export const openai_key = import.meta.env.VITE_APP_OPENAI;

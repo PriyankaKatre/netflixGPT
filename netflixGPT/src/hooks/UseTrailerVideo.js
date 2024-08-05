@@ -1,10 +1,13 @@
 import { useEffect } from 'react';
 import { options } from '../utils/constants';
 import { addTrailerVideo } from '../utils/movieSlice';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 
 export const useTrailerVideo = (movieId) => {
-  const dispatch = useDispatch();
+    const dispatch = useDispatch();
+     const trailerVideo = useSelector(
+       (state) => state.movies.trailerVideo
+     );
 
   const getMovieTrailer = async () => {
     const res = await fetch(
@@ -20,6 +23,6 @@ export const useTrailerVideo = (movieId) => {
   };
 
   useEffect(() => {
-    getMovieTrailer();
+    !trailerVideo && getMovieTrailer();
   }, []);
 };

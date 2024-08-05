@@ -1,10 +1,11 @@
 import { useEffect } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { options } from '../utils/constants';
 import { addTopRatedMovies } from '../utils/movieSlice';
 
 export const useTopRatedMovies = () => {
-  const dispatch = useDispatch();
+    const dispatch = useDispatch();
+     const topRatedMoviesFromStore = useSelector((state) => state.movies.topRatedMovies);
 
   let movieUrl =
     'https://api.themoviedb.org/3/movie/top_rated?language=en-US&page=1';
@@ -24,6 +25,6 @@ export const useTopRatedMovies = () => {
 
 
   useEffect(() => {
-    topRatedMovies();
+    !topRatedMoviesFromStore && topRatedMovies();
   }, []);
 };

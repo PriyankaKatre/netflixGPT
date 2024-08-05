@@ -1,10 +1,14 @@
 import { useEffect } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { options } from '../utils/constants';
 import { addNowPlayingMovies } from '../utils/movieSlice';
 
 export const useNowPlayingMovies = () => {
   const dispatch = useDispatch();
+
+  const nowPlayingMovies = useSelector(
+    (state) => state.movies.nowPlayingMovies
+  );
 
   let movieUrl =
     'https://api.themoviedb.org/3/movie/now_playing?language=en-US&page=1';
@@ -23,7 +27,7 @@ export const useNowPlayingMovies = () => {
   };
 
 
-  useEffect(() => {
-    getNowPlayingMovies();
+    useEffect(() => {
+      !nowPlayingMovies && getNowPlayingMovies();
   }, []);
 };

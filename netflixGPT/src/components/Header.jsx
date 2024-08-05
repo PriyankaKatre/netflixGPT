@@ -60,14 +60,26 @@ const Header = () => {
     dispatch(changeLanguage(e.target.value));
   };
   return (
-    <div className="absolute px-8 py-2 bg-gradient-to-b from-black w-screen flex justify-between z-10">
-      <img className="w-40" src={logo} alt="Logo" />
-
+    <div
+        className="absolute
+      px-8
+      py-2
+      bg-gradient-to-b
+    from-black
+      w-screen flex
+      flex-col
+      md:flex-row
+      md:justify-between z-10
+     "
+    >
+      <img className="w-40 mx-auto md:mx-0" src={logo} alt="Logo" />
       {user && (
         <div className="flex">
           {isGptSearchView && (
             <select
-              className="h-10 py-2 px-4 rounded-md text-white bg-black border-2 border-red-500 outline-none"
+              className="h-10 py-2 px-4 rounded-md text-white bg-black border-2
+               border-red-500 outline-none
+               "
               onChange={handleLangChange}
             >
               {SUPPORTED_LANGUAGES.map((lang) => (
